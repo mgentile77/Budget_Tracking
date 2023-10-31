@@ -29,6 +29,19 @@ internal class Program{
                     break;
                 } while (true);
             }
+            if (Convert.ToInt32(entry) == 2)
+            {
+                do
+                {
+                    Console.WriteLine("Enter Type of Expense: ");
+                    var Description = Console.ReadLine();
+                    Console.WriteLine("Enter Your Expense: ");
+                    var value = Convert.ToDecimal(Console.ReadLine());
+                    Expense expense = new Expense(Description, value);
+                    budget.Add_Expense(expense);
+                    break;
+                } while (true);
+            }
         } while(true);
 
     }
