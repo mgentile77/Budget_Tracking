@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Budget_Tracking", "Budget_Tracking\Budget_Tracking.csproj", "{E144AA6A-C02B-4BE4-A4E8-38E7CC51B1CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Budget_Library", "Budget_Library\Budget_Library.csproj", "{69D3DC7A-C9DB-4139-8C78-02FE1658C06F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Budget_Library", "Budget_Library\Budget_Library.csproj", "{69D3DC7A-C9DB-4139-8C78-02FE1658C06F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

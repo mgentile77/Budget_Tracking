@@ -2,12 +2,13 @@
 {
     public class Expense
     {
-        public string Description {get; private set;}
-        public decimal Value { get; private set;}
+        public List<string> Descriptions;
+        public decimal Value;
 
         public Expense(string description, decimal value)
         {
-            Description = description;
+            string expenseList = $"{description}:        {value}";
+            Descriptions.Add(expenseList);
             Value = value;
         }
     }

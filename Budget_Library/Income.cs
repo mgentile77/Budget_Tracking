@@ -4,12 +4,13 @@ namespace Budget_Library
 {
     public class Income
     {
-        public string Description { get; private set; }
-        public decimal Value { get; private set; }
+        public Decimal Value; 
+        public List<string> Descriptions;
 
-        public Income(string description, decimal value)
+        public Income(string description, Decimal value)
         {
-            Description = description;
+            string incomeList = $"{description}:        {value}";
+            Descriptions.Add(incomeList);
             Value = value;
         }
     }
