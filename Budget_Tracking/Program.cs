@@ -19,11 +19,11 @@ internal class Program{
                 break;
             if (Convert.ToInt32(entry) == 1)
             {
-                do {
+                do{
                     Console.WriteLine("Enter Type of Income: ");
                     var Description = Console.ReadLine();
                     Console.WriteLine("Enter Your Income: ");
-                    var value =Convert.ToDecimal(Console.ReadLine());
+                    var value = Convert.ToDecimal(Console.ReadLine());
                     Income income = new Income(Description, value);
                     budget.Add_Income(income);
                     break;
@@ -42,7 +42,15 @@ internal class Program{
                     break;
                 } while (true);
             }
-        } while(true);
+            if (Convert.ToInt32(entry) == 3)
+            {
+                Console.WriteLine(Reports.IncomeDescriptions());
+                Console.WriteLine(Reports.IncomeTotal());
+                Console.WriteLine(Reports.ExpenseDescriptions());
+                Console.WriteLine(Reports.ExpenseTotal());
+                Console.WriteLine(Reports.BalanceSheet());
+            }
+        } while (true);
 
     }
 }
