@@ -2,12 +2,12 @@
 {
     public class Expense
     {
-        public string Descriptions { get; private set; }
+        public string Description { get; private set; }
         public decimal Value { get; private set; }
 
         public Expense(string description, decimal value)
         {
-            Descriptions = description;
+            Description = description;
             Value = value;
         }
     }

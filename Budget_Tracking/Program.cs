@@ -12,6 +12,8 @@ internal class Program{
             Console.WriteLine("Add Income = 1");
             Console.WriteLine("Add Expense = 2");
             Console.WriteLine("View Report = 3");
+            Console.WriteLine("Delete Income Entry = 4");
+            Console.WriteLine("Delete Expense Entry = 5");
             Console.WriteLine("Exit Program = 0");
             Console.Write("Choose your option: ");
             var entry = Console.ReadLine();
@@ -44,11 +46,31 @@ internal class Program{
             }
             if (Convert.ToInt32(entry) == 3)
             {
-                Console.WriteLine(Reports.IncomeDescriptions());
-                Console.WriteLine(Reports.IncomeTotal());
-                Console.WriteLine(Reports.ExpenseDescriptions());
-                Console.WriteLine(Reports.ExpenseTotal());
-                Console.WriteLine(Reports.BalanceSheet());
+                Console.WriteLine(budget.incomes.IncomeDescriptions());
+                Console.WriteLine(budget.expenses.ExpenseDescriptions());
+                Console.WriteLine(Reports.BalanceSheet(budget.incomes, budget.expenses));
+            }
+            if (Convert.ToInt32(entry) == 4)
+            {
+                do
+                {
+                    Console.WriteLine(budget.incomes.IncomeDescriptions());
+                    Console.WriteLine("Enter Line Number of Income to Remove: ");
+                    int indexChosen = Convert.ToInt32(Console.ReadLine());
+                    budget.Delete_Income(indexChosen);
+                    break;
+                } while (true);
+            }
+            if (Convert.ToInt32(entry) == 5)
+            {
+                do
+                {
+                    Console.WriteLine(budget.expenses.ExpenseDescriptions());
+                    Console.WriteLine("Enter Line Number of Income to Remove: ");
+                    int indexChosen = Convert.ToInt32(Console.ReadLine());
+                    budget.Delete_Expense(indexChosen);
+                    break;
+                } while (true);
             }
         } while (true);
 

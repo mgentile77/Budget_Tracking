@@ -7,46 +7,41 @@ using System.Threading.Tasks;
 
 namespace Budget_Library
 {
-    public class Reports
+    public static class Reports
     {
-        private List<Expense> expenses;
-        private List<Income> incomes;
 
-        public Reports(List<Expense> expenses, List<Income> incomes)
+        public static string IncomeDescriptions(this List<Income> incomes)
         {
-            this.expenses = expenses;
-            this.incomes = incomes;
-        }
-
-        public string IncomeDescriptions()
-        {
+            
             string incomeDetail = "";
-            foreach (var income in incomes)
+            for (int i = 0; i < incomes.Count; i++)
             {
-                incomeDetail = incomeDetail + $"{income.Descriptions}:   {income.Value}";
+                incomeDetail = incomeDetail + $"{i}. {incomes[i].Description}:   {incomes[i].Value}\n";
             }
+            incomeDetail = incomeDetail + $"Your income = ${incomes.IncomeTotal()}\n";
             return incomeDetail;
         }
-        public decimal IncomeTotal()
+        public static decimal IncomeTotal(this List<Income> incomes)
         {
             return incomes.Select(i => i.Value).Sum();
         }
-        public string ExpenseDescriptions()
+        public static string ExpenseDescriptions(this List<Expense> expenses)
         {
             string expenseDetail = "";
-            foreach (var expense in expenses)
+            for (int i = 0; i < expenses.Count; i++)
             {
-                expenseDetail = expenseDetail + $"{expense.Descriptions}:   {expense.Value}";
+                expenseDetail = expenseDetail + $"{i}. {expenses[i].Description}:   -{expenses[i].Value}\n";
             }
+            expenseDetail = expenseDetail + $"Your expenses = $-{expenses.ExpenseTotal()}\n";
             return expenseDetail;
         }
-        public decimal ExpenseTotal()
+        public static decimal ExpenseTotal(this List<Expense> expenses)
         {
             return expenses.Select(i => i.Value).Sum();
         }
-        public string BalanceSheet()
+        public static string BalanceSheet(List<Income> incomes, List<Expense> expenses)
         {
-            decimal sheetTotal = IncomeTotal() - ExpenseTotal();
+            decimal sheetTotal = incomes.IncomeTotal() - expenses.ExpenseTotal();
             if (sheetTotal < 0)
             {
                 return $"You currently show a loss of:\t{sheetTotal}";
