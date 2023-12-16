@@ -4,9 +4,9 @@ using System.Globalization;
 
 namespace Budget_Library
 {
-    public static class Csvrepository
+    public  class Csvrepository :ICSVRepository
     {
-        public static List <T> Csv_read <T> (string filename)
+        public  List <T> Csv_read <T> (string filename)
         {
             var fileBasePath = AppDomain.CurrentDomain.BaseDirectory;
             var filepath = Path.Combine (fileBasePath, filename + ".csv");
@@ -22,7 +22,7 @@ namespace Budget_Library
             }
             return new List<T>();
         }
-        public static void Csv_write<T>(List<T> records,string filename, FileMode filemode, bool writeHeader)
+        private  void Csv_write<T>(List<T> records,string filename, FileMode filemode, bool writeHeader)
         {
             var fileBasePath = AppDomain.CurrentDomain.BaseDirectory;
             var filepath = Path.Combine(fileBasePath, filename + ".csv");
@@ -35,13 +35,13 @@ namespace Budget_Library
             using var csv = new CsvWriter(writer, config);
             csv.WriteRecords<T>(records);
         }
-        public static void savecsv<T>(List<T> records, string filename)
+        public  void savecsv<T>(List<T> records, string filename)
         {
             var fileBasePath = AppDomain.CurrentDomain.BaseDirectory;
             var filepath = Path.Combine(fileBasePath, filename + ".csv");
             Csv_write(records, filename, FileMode.Append, !File.Exists(filepath));
         }
-        public static void removecsv<T>(List<T> records, string filename)
+        public  void removecsv<T>(List<T> records, string filename)
         {
             Csv_write(records, filename, FileMode.Truncate, true);
         }

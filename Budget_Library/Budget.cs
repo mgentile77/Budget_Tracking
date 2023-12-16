@@ -8,10 +8,13 @@ namespace Budget_Library
     {
         public List<Income> incomes = new List<Income>();
         public List<Expense> expenses = new List<Expense>();
-        public Budget()
+        private readonly ICSVRepository Csvrepository;
+
+        public Budget(ICSVRepository Csvrepository)
         {
             incomes = Csvrepository.Csv_read<Income>("incomeFile");
             expenses = Csvrepository.Csv_read<Expense>("expenseFile");
+            this.Csvrepository = Csvrepository;
         }
 
         public void Add_Expense(Expense expense)

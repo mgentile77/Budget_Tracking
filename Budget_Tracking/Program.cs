@@ -5,7 +5,7 @@ internal class Program{
     static void Main(
         string [] args
     ){
-        Budget budget = new Budget();
+        Budget budget = new Budget(new Csvrepository());
         do{
             Console.WriteLine();
             Console.WriteLine("Busget Tracking Application");
